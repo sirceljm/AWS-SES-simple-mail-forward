@@ -13,11 +13,11 @@ Other option is to set AWS SES Email receiving rule.
  * Set environment variable fwd_address to email address that you want your emails forwarded to
  * Handler should be index.handler
  * Role: create custom role > new page will open
-  * IAM Role > Create a new IAM Role
-  * Role name > lambda_email_forward or enter name of your choice
-  * View Policy Document > Edit
-  * Copy and replace existing JSON with JSON from mail_forward_policy.json
-  * Allow
+   * IAM Role > Create a new IAM Role
+   * Role name > lambda_email_forward or enter name of your choice
+   * View Policy Document > Edit
+   * Copy and replace existing JSON with JSON from mail_forward_policy.json
+   * Allow
  * Memory 512 MB, timeout 10s
  * Next > Create function
   
