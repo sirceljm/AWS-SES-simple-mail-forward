@@ -11,7 +11,8 @@ exports.handler = (event, context, callback) => {
     content = content.replace(/^reply-to:.*\r\n/igm, '')
     content = content.replace(/^return-path:.*\r\n/igm, '')
     content = content.replace(/^subject:.*\r\n/igm, 'Subject: [' + from + '] ' + subject + '\r\n')
-  
+    content = content.replace(/^DKIM-Signature: .*\r?\n(\s+.*\r?\n)*/mg, '')
+
     ses.sendRawEmail({
       RawMessage: {
         Data: content
