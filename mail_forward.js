@@ -4,7 +4,6 @@ var ses = new AWS.SES();
 exports.handler = (event, context, callback) => {
   var content = JSON.parse(event.Records[0].Sns.Message).content;
 
-  content = content.replace(/^from:.*\r\n/igm, '');
   content = content.replace(/^reply-to:.*\r\n/igm, '');
   content = content.replace(/^return-path:.*\r\n/igm, '');
   content = content.replace(/^DKIM-Signature: .*\r?\n(\s+.*\r?\n)*/mg, '');
