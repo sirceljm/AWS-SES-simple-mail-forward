@@ -2,15 +2,9 @@ var AWS = require('aws-sdk');
 var ses = new AWS.SES();
 
 exports.handler = (event, context, callback) => {
-  var content = JSON.parse(event.Records[0].Sns.Message).content;
-
-  content = content.replace(/^reply-to:.*\r\n/igm, '');
-  content = content.replace(/^return-path:.*\r\n/igm, '');
-  content = content.replace(/^DKIM-Signature: .*\r?\n(\s+.*\r?\n)*/mg, '');
-
   ses.sendRawEmail({
     RawMessage: {
-      Data: content
+      Data: JSON.parse(event.Records[0].Sns.Message).content.replace(/^DKIM-Signature: .*\r?\n(\s+.*\r?\n)*/mg, '')
     },
     Source: process.env.from_address,
     Destinations: [process.env.to_address],
