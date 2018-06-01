@@ -29,7 +29,6 @@ Other option is to set AWS SES Email receiving rule.
   * Runtime Node 4.3
   * Copy the code from mail_forward.js to lambda function code
   * Set environment variable to_address to email address that you want your emails forwarded to
-  * Set environment variable from_address to email address that you want your emails forwarded from
   * Handler should be index.handler
   * Role: create custom role > new page will open
     * IAM Role > Create a new IAM Role
